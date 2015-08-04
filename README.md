@@ -1,10 +1,10 @@
 <h4>SGP - Sistema web para gerenciamento de uma pousada.</h4>
 
-A pasta doc contêm: </br>
+<b>A pasta doc contêm:</b> </br>
 Especificação dos Requisitos do Software.</br>
 UML gerada. </br>
 
-Tecnologias utilizadas: </br>
+<b>Tecnologias utilizadas:</b> </br>
 PostgreSQL </br>
 JPA (Hibernate) </br>
 JSF (Primefaces) </br>
@@ -12,5 +12,5 @@ JUnit </br>
 Maven </br>
 UML </br>
 
-Para atualizar as dependecias: </br>
+<b>Para atualizar as dependecias:</b> </br>
 Click com botão direto no projeto > Maven > Update Project </br>
