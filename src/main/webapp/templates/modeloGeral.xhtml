@@ -16,24 +16,33 @@
 
 <p:layout fullPage="true">
  
-    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="North unit content." />
+    <p:layoutUnit header="Sistema Gerenciador de Pousada"
+                  position="north" resizable="false" closable="false" collapsible="false">
     </p:layoutUnit>
  
-    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="South unit content." />
+    <p:layoutUnit header="Desenvolvido por Jonatas" 
+                  position="south" resizable="false" closable="false" collapsible="false">
     </p:layoutUnit>
  
-    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="West unit content." />
+    <p:layoutUnit position="west" size="200" resizable="false" closable="false" collapsible="false">
+    		<h:form>
+    			<p:panelMenu>
+    				<p:submenu label="Arquivos">
+    					<p:menuitem value="home" outcome="/pages/principal.xhtml"/>
+    					<p:menuitem value="sair"/>
+    				</p:submenu>
+    				<p:submenu label="Cadastros">
+    					<p:menuitem value="Cliente" outcome="/pages/clienteCadastro.xhtml"/>
+    				</p:submenu>
+    				<p:submenu label="Pesquisas">
+    					<p:menuitem value="Cliente" outcome="/pages/clientePesquisa.xhtml"/>
+    				</p:submenu>
+    			</p:panelMenu>
+    		</h:form>
     </p:layoutUnit>
- 
-    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
-        <h:outputText value="Right unit content." />
-    </p:layoutUnit>
- 
-    <p:layoutUnit position="center">
-        //page code
+  
+    <p:layoutUnit position="center" resizable="false" closeble="false">
+        <ui:insert name="conteudo"/>
     </p:layoutUnit>
  
 </p:layout>
