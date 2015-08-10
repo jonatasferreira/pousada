@@ -1,5 +1,6 @@
 package br.com.pousada.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ public class Funcionario extends Pessoa {
 //	private Long codigo;
 	
 	@Column(nullable = false)
-	private Date dataAdmicao;
+	private Date dataAdmissao;
 	
 	@Column(nullable = false, precision = 2)
 	private Double salario;
@@ -43,17 +44,17 @@ public class Funcionario extends Pessoa {
 //	}
 
 	/**
-	 * @return the dataAdmicao
+	 * @return the dataAdmissao
 	 */
-	public Date getDataAdmicao() {
-		return dataAdmicao;
+	public Date getDataAdmissao() {
+		return dataAdmissao;
 	}
 
 	/**
-	 * @param dataAdmicao the dataAdmicao to set
+	 * @param dataAdmissao the dataAdmissao to set
 	 */
-	public void setDataAdmicao(Date dataAdmicao) {
-		this.dataAdmicao = dataAdmicao;
+	public void setDataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
 	}
 
 	/**
@@ -120,6 +121,28 @@ public class Funcionario extends Pessoa {
 	 */
 	@Override
 	public String toString() {
-		return "Funcionario [nome="+this.getNome()+", cpf="+this.getCpf()+", salario=" + salario + "]";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Funcionario [nome=");
+		stringBuilder.append(this.getNome());
+		stringBuilder.append("\n");
+		stringBuilder.append(", cpf=");
+		stringBuilder.append(this.getCpf());
+		stringBuilder.append("\n");
+		stringBuilder.append(", email=");
+		stringBuilder.append(this.getEmail());
+		stringBuilder.append("\n");
+		stringBuilder.append(", salario=");
+		stringBuilder.append(this.getSalario());
+		stringBuilder.append("\n");
+		stringBuilder.append(", funcao=");
+		stringBuilder.append(this.getFuncao().name());
+		stringBuilder.append("\n");
+		if (dataAdmissao != null) {
+			stringBuilder.append(", dataAdmissao=");
+			SimpleDateFormat formatas = new SimpleDateFormat("dd/MM/yyyy");
+			stringBuilder.append(formatas.format(dataAdmissao));
+		}
+		stringBuilder.append("]");
+		return stringBuilder.toString();
 	}
 }

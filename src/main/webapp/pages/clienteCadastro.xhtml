@@ -17,17 +17,17 @@
 				</p:toolbar>
 				
 				<p:panelGrid columns="2">
-					<p:outputLabel value="Código" />
-					<p:inputText size="10" readonly="true" />
+					<p:outputLabel value="Nome" />
+					<p:inputText size="50" maxlength="100" value="#{clienteBean.cliente.nome}" />
 				
-					<p:outputLabel value="Descrição:" />
-					<p:inputText maxlength="50" size="30" />
-				</p:panelGrid>
-				
-				<p:panelGrid columns="3">
-					<p:commandButton value="Novo" />
-					<p:commandButton value="Salvar" />
-					<p:commandButton value="Voltar" action="/pages/clientePesquisa.xhtml?faces-redirect=true"/>
+					<p:outputLabel value="Cpf" />
+					<p:inputText maxlength="11" size="11" value="#{clienteBean.cliente.cpf}" />
+					
+					<p:outputLabel value="Email" />
+					<p:inputText maxlength="50" size="50" value="#{clienteBean.cliente.email}" />
+					
+					<p:commandButton value="Novo cadastro" />
+					<p:commandButton value="Salvar cadastro" actionListener="#{clienteBean.salvar}" update=":msgGlobal" />
 				</p:panelGrid>
 			</h:form>
 		</ui:define>

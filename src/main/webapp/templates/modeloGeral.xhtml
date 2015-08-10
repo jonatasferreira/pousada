@@ -13,6 +13,7 @@
 
 <h:body>
 
+<p:growl id="msgGlobal" sticky="true"/>
 
 <p:layout fullPage="true">
  
@@ -27,15 +28,16 @@
     <p:layoutUnit position="west" size="200" resizable="false" closable="false" collapsible="false">
     		<h:form>
     			<p:panelMenu>
-    				<p:submenu label="Arquivos">
-    					<p:menuitem value="home" outcome="/pages/principal.xhtml"/>
-    					<p:menuitem value="sair"/>
+    				<p:submenu label="Sistema">
+    					<p:menuitem value="home" outcome="/pages/home.xhtml"/>
     				</p:submenu>
     				<p:submenu label="Cadastros">
     					<p:menuitem value="Cliente" outcome="/pages/clienteCadastro.xhtml"/>
+    					<p:menuitem value="Funcionário" outcome="/pages/funcionarioCadastro.xhtml"/>
     				</p:submenu>
     				<p:submenu label="Pesquisas">
     					<p:menuitem value="Cliente" outcome="/pages/clientePesquisa.xhtml"/>
+    					<p:menuitem value="Funcionario" outcome="/pages/funcionarioPesquisa.xhtml"/>
     				</p:submenu>
     			</p:panelMenu>
     		</h:form>

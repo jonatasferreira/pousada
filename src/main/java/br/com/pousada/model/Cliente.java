@@ -1,5 +1,6 @@
 package br.com.pousada.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -10,44 +11,40 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "Cliente.listar", query = "SELECT cliente FROM Cliente cliente")
-})
+@NamedQueries({ @NamedQuery(name = "Cliente.listar", query = "SELECT cliente FROM Cliente cliente") })
 public class Cliente extends Pessoa {
-/**
-	 * 
-	 */
+	/**
+		 * 
+		 */
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Long codigo;
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.AUTO)
+	// private Long codigo;
 
 	@Column(nullable = false)
 	private Date dataCadastro;
-	
+
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private Collection<Hospede> hospedagens;
-	
+
 	@OneToMany(mappedBy = "contratante", cascade = CascadeType.ALL)
 	private Collection<Aluga> alugueis;
 
-//	/**
-//	 * @return the codigo
-//	 */
-//	public Long getCodigo() {
-//		return codigo;
-//	}
-//
-//	/**
-//	 * @param codigo the codigo to set
-//	 */
-//	public void setCodigo(Long codigo) {
-//		this.codigo = codigo;
-//	}
+	// /**
+	// * @return the codigo
+	// */
+	// public Long getCodigo() {
+	// return codigo;
+	// }
+	//
+	// /**
+	// * @param codigo the codigo to set
+	// */
+	// public void setCodigo(Long codigo) {
+	// this.codigo = codigo;
+	// }
 
 	/**
 	 * @return the dataCadastro
@@ -57,7 +54,8 @@ public class Cliente extends Pessoa {
 	}
 
 	/**
-	 * @param dataCadastro the dataCadastro to set
+	 * @param dataCadastro
+	 *            the dataCadastro to set
 	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
@@ -71,7 +69,8 @@ public class Cliente extends Pessoa {
 	}
 
 	/**
-	 * @param hospedagens the hospedagens to set
+	 * @param hospedagens
+	 *            the hospedagens to set
 	 */
 	public void setHospedagens(Collection<Hospede> hospedagens) {
 		this.hospedagens = hospedagens;
@@ -85,13 +84,16 @@ public class Cliente extends Pessoa {
 	}
 
 	/**
-	 * @param alugueis the alugueis to set
+	 * @param alugueis
+	 *            the alugueis to set
 	 */
 	public void setAlugueis(Collection<Aluga> alugueis) {
 		this.alugueis = alugueis;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -102,7 +104,9 @@ public class Cliente extends Pessoa {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -122,13 +126,30 @@ public class Cliente extends Pessoa {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Cliente [nome="+this.getNome()+", cpf="+this.getCpf()+", dataCadastro=" + dataCadastro + "]";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Cliente [nome=");
+		stringBuilder.append(this.getNome());
+		stringBuilder.append("\n");
+		stringBuilder.append(", cpf=");
+		stringBuilder.append(this.getCpf());
+		stringBuilder.append("\n");
+		stringBuilder.append(", email=");
+		stringBuilder.append(this.getEmail());
+		stringBuilder.append("\n");
+		if (dataCadastro != null) {
+			stringBuilder.append(", dataCadastro=");
+			SimpleDateFormat formatas = new SimpleDateFormat("dd/MM/yyyy");
+			stringBuilder.append(formatas.format(dataCadastro));
+		}
+		stringBuilder.append("]");
+		return stringBuilder.toString();
 	}
-	
-	
+
 }
