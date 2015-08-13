@@ -47,19 +47,7 @@ public class Aluga {
 	@OneToMany(mappedBy = "aluguel", cascade = CascadeType.ALL)
 	private Collection<ConsumoFrigobar> consumoFrigobar;
 
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the dataReserva

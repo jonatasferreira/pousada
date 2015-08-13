@@ -45,4 +45,56 @@ public class ClienteDAO {
 		}
 		return clientes;
 	}
+	
+	public Cliente buscarPorCodigo(String cpf){
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Cliente cliente = null;
+		try {
+			Query consulta = sessao.getNamedQuery("Cliente.buscarPorCodigo");
+			consulta.setString("cpf", cpf);
+			cliente = (Cliente) consulta.uniqueResult();
+		} catch (RuntimeException ex) {
+			throw ex;
+		}finally {
+			sessao.close();
+		}
+		return cliente;
+	}
+
+	/**
+	 * @param cliente
+	 */
+	public void excluir(Cliente cliente) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Transaction trasacao = null;
+		try{
+			trasacao = sessao.beginTransaction();
+			sessao.delete(cliente);
+			trasacao.commit();
+		}catch(RuntimeException ex){
+			if(trasacao != null){
+				trasacao.rollback();
+			}
+			throw ex;
+		}finally{
+			sessao.close();
+		}
+	}
+
+	public void editar(Cliente cliente) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Transaction trasacao = null;
+		try{
+			trasacao = sessao.beginTransaction();
+			sessao.update(cliente);
+			trasacao.commit();
+		}catch(RuntimeException ex){
+			if(trasacao != null){
+				trasacao.rollback();
+			}
+			throw ex;
+		}finally{
+			sessao.close();
+		}
+	}
 }

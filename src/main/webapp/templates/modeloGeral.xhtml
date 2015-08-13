@@ -6,9 +6,12 @@
 		xmlns:p="http://primefaces.org/ui"
 		xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+<ui:insert name="metadata" />
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Pousada</title>
+	<link type="text/css" rel="stylesheet" href="/pousada/pages/estilos.css" />
 </h:head>
 
 <h:body>
@@ -17,7 +20,7 @@
 
 <p:layout fullPage="true">
  
-    <p:layoutUnit header="Sistema Gerenciador de Pousada"
+    <p:layoutUnit header="SGP - Sistema Gerenciador de Pousada"
                   position="north" resizable="false" closable="false" collapsible="false">
     </p:layoutUnit>
  
@@ -25,11 +28,12 @@
                   position="south" resizable="false" closable="false" collapsible="false">
     </p:layoutUnit>
  
-    <p:layoutUnit position="west" size="200" resizable="false" closable="false" collapsible="false">
+    <p:layoutUnit position="west" size="110" resizable="false" closable="false" collapsible="false">
     		<h:form>
     			<p:panelMenu>
     				<p:submenu label="Sistema">
     					<p:menuitem value="home" outcome="/pages/home.xhtml"/>
+    					<p:menuitem value="help" />
     				</p:submenu>
     				<p:submenu label="Cadastros">
     					<p:menuitem value="Cliente" outcome="/pages/clienteCadastro.xhtml"/>
@@ -49,8 +53,7 @@
  
 </p:layout>
 	
-	
-	
 </h:body>
 
 </html>
+

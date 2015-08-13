@@ -12,7 +12,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Cliente.listar", query = "SELECT cliente FROM Cliente cliente") })
+@NamedQueries({ 
+	@NamedQuery(name = "Cliente.listar", query = "SELECT cliente FROM Cliente cliente"),
+	@NamedQuery(name = "Cliente.buscarPorCodigo", query = "SELECT cliente FROM Cliente cliente WHERE cliente.cpf = :cpf")
+})
 public class Cliente extends Pessoa {
 	/**
 		 * 

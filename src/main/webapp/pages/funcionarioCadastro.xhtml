@@ -9,14 +9,14 @@
 
 	<ui:composition template="/templates/modeloGeral.xhtml">
 		<ui:define name="conteudo">
-			<h:form>
+			<h:form id="frmFuncCad">
 				<p:toolbar>
 					<f:facet name="left">
 						<h:outputText value="Funcionário" />
 					</f:facet>
 				</p:toolbar>
 				
-				<p:panelGrid columns="2">
+				<p:panelGrid id="pnlFuncCad" columns="2">
 					<p:outputLabel value="Nome" />
 					<p:inputText size="50" maxlength="100" value="#{funcionarioBean.funcionario.nome}" />
 				
@@ -36,12 +36,16 @@
 				                itemLabel="#{fun}"
 				                itemValue="#{fun}"/>
 			        </p:selectOneMenu>
-			        
+			    
 			        <p:outputLabel value="Data Admissão"/>
         			<p:calendar id="dataAdm" value="#{funcionarioBean.dateAdmissao}" />
-
-					<p:commandButton value="Novo cadastro" />
-					<p:commandButton value="Salvar cadastro" actionListener="#{funcionarioBean.salvar}" update=":msgGlobal" />
+				</p:panelGrid>
+				
+				<p:panelGrid columns="2">
+					<p:commandButton value="Novo cadastro" actionListener="#{funcionarioBean.novo()}"
+									 update=":frmFuncCad:pnlFuncCad" />
+					<p:commandButton value="Salvar cadastro" actionListener="#{funcionarioBean.salvar()}" 
+									 update=":msgGlobal :frmFuncCad:pnlFuncCad" />
 				</p:panelGrid>
 			</h:form>
 		</ui:define>

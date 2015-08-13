@@ -8,15 +8,22 @@
 
 
 	<ui:composition template="/templates/modeloGeral.xhtml">
+	
+		<ui:define name="metadata">
+			<f:metadata>
+				<f:event listener="#{clienteBean.lerClienteBanco()}" type="preRenderView" />
+			</f:metadata>
+		</ui:define>
+	
 		<ui:define name="conteudo">
-			<h:form>
+			<h:form id="frmCliCad">
 				<p:toolbar>
 					<f:facet name="left">
 						<h:outputText value="Clientes" />
 					</f:facet>
 				</p:toolbar>
 				
-				<p:panelGrid columns="2">
+				<p:panelGrid id="pnlCliCad" columns="2" >
 					<p:outputLabel value="Nome" />
 					<p:inputText size="50" maxlength="100" value="#{clienteBean.cliente.nome}" />
 				
@@ -25,9 +32,17 @@
 					
 					<p:outputLabel value="Email" />
 					<p:inputText maxlength="50" size="50" value="#{clienteBean.cliente.email}" />
-					
-					<p:commandButton value="Novo cadastro" />
-					<p:commandButton value="Salvar cadastro" actionListener="#{clienteBean.salvar}" update=":msgGlobal" />
+				</p:panelGrid>
+				
+				<p:panelGrid columns="3" >
+					<p:commandButton value="Novo cadastro" actionListener="#{clienteBean.novo()}"
+									 update=":frmCliCad:pnlCliCad" />
+									 
+					<p:commandButton value="Salvar cadastro" actionListener="#{clienteBean.salvar()}" 
+									 update=":msgGlobal :frmCliCad:pnlCliCad" />
+									 
+					<p:commandButton value="Editar" actionListener="#{clienteBean.editar()}"
+									 update=":msgGlobal" />
 				</p:panelGrid>
 			</h:form>
 		</ui:define>

@@ -28,19 +28,7 @@ public class Quarto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Categoria categoria;
 
-	/**
-	 * @return the codigo
-	 */
-	public Long getCodigo() {
-		return codigo;
-	}
 
-	/**
-	 * @param codigo the codigo to set
-	 */
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
 
 	/**
 	 * @return the descricao

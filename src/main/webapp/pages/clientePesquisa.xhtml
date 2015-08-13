@@ -8,29 +8,45 @@
 
 
 	<ui:composition template="/templates/modeloGeral.xhtml">
+		<ui:define name="metadata">
+			<f:metadata>
+				<f:event listener="#{clienteBean.listarDadosBanco()}" type="preRenderView"></f:event>
+			</f:metadata>
+		</ui:define>
 		<ui:define name="conteudo">
-			<h:form>
+			<h:form id="formList">
 				<p:toolbar>
 					<f:facet name="left">
 						<h:outputText value="Clientes" />
 					</f:facet>
 				</p:toolbar>
-			
-				<h:panelGrid columns="4">
-					<p:outputLabel value="CPF"/>
-					<p:inputText maxlength="11" size="11"/>
-					<p:commandButton value="Buscar"/>
-				</h:panelGrid>
 				
-				<p:dataTable emptyMessage="Nenhum registro encontrado.">
-					<p:column headerText="Código">
+				<p:dataTable id="tableList" emptyMessage="Nenhum registro encontrado."
+					value="#{clienteBean.listaCliente}" 
+					filteredValue="#{clienteBean.listaClienteFiltrados}"
+					var="clienteCursor" 
+					rows="10" paginator="true" >
+					
+					<p:column headerText="Cpf">
+						<h:outputText value="#{clienteCursor.cpf}" />
 					</p:column>
 					
-					<p:column headerText="Descrição">
+					<p:column headerText="Nome">
+						<h:outputText value="#{clienteCursor.nome}" />
 					</p:column>
 					
-					<p:column headerText="Opções">
+					<p:column headerText="Email">
+						<h:outputText value="#{clienteCursor.email}" />
 					</p:column>
+					
+					<p:column headerText="Opções" >
+						<p:button value="editar" outcome="/pages/clienteCadastro.xhtml" >
+							<f:param name="cod" value="#{clienteCursor.cpf}"/>
+						</p:button>
+						<p:commandButton value="excluir" actionListener="#{clienteBean.excluir(clienteCursor.cpf)}"
+										 update=":msgGlobal :formList:tableList" />
+					</p:column>
+					
 				</p:dataTable>
 			</h:form>
 		</ui:define>
