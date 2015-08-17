@@ -27,5 +27,10 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>cupertino</param-value>
 	</context-param>
+	
+	<context-param>
+	    <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+	    <param-value>0</param-value> 	<!--  0 cache desligado -->
+	</context-param>					<!-- -1 habilita o cache indefinidamente -->
   
 </web-app>
