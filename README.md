@@ -13,5 +13,4 @@ Maven </br>
 UML </br>
 Eclipse Mars </br>
 
-<b>Para atualizar as dependecias:</b> </br>
-Click com botão direto no projeto > Maven > Update Project </br>
+
