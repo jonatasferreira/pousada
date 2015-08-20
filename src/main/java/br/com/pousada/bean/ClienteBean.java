@@ -11,6 +11,10 @@ import br.com.pousada.model.Cliente;
 import br.com.pousada.model.Endereco;
 import br.com.pousada.util.FacesUtil;
 
+/**
+ * @author Jonatas
+ * Classe managedBean clientes
+ */
 @ManagedBean
 @ViewScoped
 public class ClienteBean {
@@ -18,22 +22,42 @@ public class ClienteBean {
 	private List<Cliente> listaCliente;
 	private List<Cliente> listaClienteFiltrados;
 
+	/**
+	 * Retorna lista de cliente recuperados da base de dados ou da view 
+	 * @return Lista de clientes
+	 */
 	public List<Cliente> getListaCliente() {
 		return listaCliente;
 	}
 	
+	/**
+	 * Set lista de clientes
+	 * @param listaCliente
+	 */
 	public void setListaCliente(List<Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
 	}
 	
+	/**
+	 * Retorna a lista de clientes aplicada um filtro especifico.
+	 * @return lista filtrada
+	 */
 	public List<Cliente> getListaClienteFiltrados() {
 		return listaClienteFiltrados;
 	}
 	
+	/**
+	 * Set lista de clientes com um filtro especifico
+	 * @param listaClienteFiltrados
+	 */
 	public void setListaClienteFiltrados(List<Cliente> listaClienteFiltrados) {
 		this.listaClienteFiltrados = listaClienteFiltrados;
 	}
 	
+	/**
+	 * Retorna um cliente
+	 * @return Um cliente
+	 */
 	public Cliente getCliente() {
 		if (cliente == null) {
 			this.novo();
@@ -41,10 +65,17 @@ public class ClienteBean {
 		return cliente;
 	}
 
+	/**
+	 * Set o cliente
+	 * @param cliente
+	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
+	/**
+	 * Salvar um cliente na base de dados
+	 */
 	public void salvar() {
 		try {
 			// TODO: Adicionar teste correto para cpf e email valido
@@ -68,6 +99,10 @@ public class ClienteBean {
 		}
 	}
 	
+	/**
+	 * Exclui um cliente da base de dados
+	 * @param cpf
+	 */
 	public void excluir(String cpf) {
 		Cliente cli;
 		try {
@@ -83,6 +118,9 @@ public class ClienteBean {
 		}
 	}
 	
+	/**
+	 * Edita na base de dados o cliente refereciado no atributo cliente
+	 */
 	public void editar() {
 		try {
 			ClienteDAO dao = new ClienteDAO();
@@ -94,6 +132,9 @@ public class ClienteBean {
 		}
 	}
 	
+	/**
+	 * Lista todos os cliente da base de dados
+	 */
 	public void listarDadosBanco(){
 		try {
 			ClienteDAO dao = new ClienteDAO();
@@ -104,6 +145,9 @@ public class ClienteBean {
 		}
 	}
 	
+	/**
+	 * Busca um cliente na base de dados
+	 */
 	public void lerClienteBanco(){
 		try {
 			String valor = FacesUtil.getParam("cod");
@@ -117,11 +161,18 @@ public class ClienteBean {
 		}
 	}
 	
+	/**
+	 * Inicializa com o novo objeto o atributo cliente
+	 */
 	public void novo(){
 		cliente = new Cliente();
 		cliente.setDataCadastro(new Date());
 	}
 	
+	/**
+	 * Metodo simples para verificar entrada de cpf e nome
+	 * @return
+	 */
 	private boolean testCadastro(){
 		if(cliente.getCpf().length() < 11){
 			FacesUtil.addMsgInfo("Digite os 11 digitos do cpf!");
